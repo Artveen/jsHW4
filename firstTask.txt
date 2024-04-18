@@ -16,41 +16,52 @@ null + 3
 true + false
 //result = 1; true =1; false = 0;
 
-'4px' - 3;
-//result NaN
+'4px' - 3; //result NaN
+//'4px' cant convert string as number
 
 '4' - 3
 //result '4' string change to number 4-3=1
 
-'6' + 3 ** 0;
-// '61'
+'6' + 3 ** 0; //result '61'
+// 3 ** 0 equals 1 because any number raised to the power of 0 equals 1
+//'6' is a string.
+//When we add a string to a number it concatenates them. So, '6' + 1 equals '61'.
 
-12 / '6'
-// 2
+12 / '6' // result 2
+// In this case we divide number by the string
+// string '6' can convert as number
 
 '10' + (5 === 6);
-// '10false'
+// 5===6 = false, '10' is string, as result we have string '10false'
+
 
 null == ''
 //true cause string was empty
 
-3 ** (9 / 3);
-// 27
+3 ** (9 / 3); // result 27
+// 9 / 3 =3
+// the number 3 is raised to the third power
 
-!!'false' == !!'true'
-//true
+!!'false' == !!'true' //result true
+// !!'false' convert string as logical true, because any not empty string is true value
+// !!'true" returns true
 
-0 || '0' && 1
-//1
+
+0 || '0' && 1 // result 1
+//first step 0 || '0', operator || return us first true value or last value, if neither is true.
+//In this case 0 mean falsy, cause it is 0, result of this case = 0;
+// 0 && 1, operator && return us first false value if there is one, in other it returns the last value, in this case '0' = true because string is not empty as a result =1
 
 (+null == false) < 1;
-//true;
+//+null convert as number than we have +null = o
+//+null == false compares 0 with logical false, thant in compare false, number 0 turns into false,  as a result we have false;
 
 false && true || true
-//true
+//&& has higher priority than ||, false && true = false;
+//operator || returns true if we have one or more operand with true value and as a result we have: false || true = true;
 
 false && (false || true);
-//false
+//false || true, || = true, true; false && true if we have 1 or more false result will be false
 
 (+null == false) < 1 ** 5;
-//true
+//+null = number = 0; +null == false = false; 1 ** 5 = 1; false < 1, false = 0; 0 < 1 = true;
