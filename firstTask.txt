@@ -8,33 +8,49 @@ null + 3
 //result 5= true; "qwerty" = true; result is second value "qwerty"
 
 +'40' + +'2' + "hillel";
+//result '402hillel' '40'=string; '2' change to number cause we have +;
 
 '10' - 5 === 6;
+//result false because '10' string change to number - 5 = 5;
 
 true + false
+//result = 1; true =1; false = 0;
 
-'4px' - 3
+'4px' - 3;
+//result NaN
 
 '4' - 3
+//result '4' string change to number 4-3=1
 
 '6' + 3 ** 0;
+// '61'
 
 12 / '6'
+// 2
 
 '10' + (5 === 6);
+// '10false'
 
 null == ''
+//true cause string was empty
 
 3 ** (9 / 3);
+// 27
 
 !!'false' == !!'true'
+//true
 
 0 || '0' && 1
+//1
 
 (+null == false) < 1;
+//true;
 
 false && true || true
+//true
 
 false && (false || true);
+//false
 
 (+null == false) < 1 ** 5;
+//true
