@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Example</title>
+    <!-- Вставте сюди будь-які додаткові теги <script>, які вам можуть знадобитися -->
+</head>
+<body>
+<h1>JavaScript Example</h1>
+<!-- Вставте сюди вміст вашої сторінки HTML -->
+
+<!-- Скриптовий тег для вашого JavaScript-коду -->
+<script>
+    // Запит на введення року
+    let year = prompt("Введіть рік");
+
+    // Перевірка чи значення є числом і не відʼємне
+    if (!isNaN(year) && parseInt(year) >= 0) {
+        // Перевірка останньої цифри року для визначення правильного року
+        let lastLetter = parseInt(year) % 10;
+        let lastTwoLetters = parseInt(year) % 100;
+        if ((lastTwoLetters >= 11 && lastTwoLetters <= 14) || (lastLetter === 0) || (lastLetter >= 5 && lastLetter <= 9)) {
+            console.log(year + " років");
+        } else if (lastLetter === 1) {
+            console.log(year + " рік");
+        } else {
+            console.log(year + " роки");
+        }
+    } else {
+        console.log("Ваше значення не коректне. Введіть, будь ласка, додатнє число");
+    }
+</script>
+</body>
+</html>
