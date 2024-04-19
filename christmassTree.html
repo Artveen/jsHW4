@@ -25,21 +25,17 @@
 <input type="checkbox" id="both" onchange="updateTriangle()">
 <br>
 <br>
-<button onclick="drawTriangle()">Draw triangles</button>
+<button onclick="drawTriangles()">Draw triangles</button>
 <div id="output"></div>
 
 <script>
     // Function to draw a triangle
-    function drawTriangle() {
+    function drawTriangle(height, symbol, decreasing) {
         const output = document.getElementById("output");
         output.innerHTML = ''; // Clear output content
 
-        const direction = document.getElementById("direction").value;
-        const height = parseInt(document.getElementById("height").value);
-        const symbol = document.getElementById("symbol").value;
-
-        if (direction === "increasing") {
-            for (let i = 1; i <= height; i++) {
+        if (decreasing) {
+            for (let i = height; i >= 1; i--) {
                 let row = '';
                 for (let j = 1; j <= i; j++) {
                     row += symbol;
@@ -47,7 +43,7 @@
                 output.innerHTML += row + "<br>";
             }
         } else {
-            for (let i = height; i >= 1; i--) {
+            for (let i = 1; i <= height; i++) {
                 let row = '';
                 for (let j = 1; j <= i; j++) {
                     row += symbol;
@@ -64,12 +60,21 @@
 
         if (showBoth) {
             // Show both types of triangles
-            drawTriangle(); // Increasing
-            drawTriangle(); // Decreasing
+            drawTriangles(); // Increasing
+            drawTriangles(true); // Decreasing
         } else {
             // Show the selected type of triangle from the dropdown
-            drawTriangle();
+            drawTriangles();
         }
+    }
+
+    // Function to draw triangles based on the selected direction
+    function drawTriangles(decreasing = false) {
+        const direction = document.getElementById("direction").value;
+        const height = parseInt(document.getElementById("height").value);
+        const symbol = document.getElementById("symbol").value;
+
+        drawTriangle(height, symbol, decreasing);
     }
 </script>
 
