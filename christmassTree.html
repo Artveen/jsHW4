@@ -29,12 +29,16 @@
 <div id="output"></div>
 
 <script>
-    // Функція для малювання прямого трикутника
-    function drawTriangle(height, symbol, increasing) {
+    // Function to draw a triangle
+    function drawTriangle() {
         const output = document.getElementById("output");
-        output.innerHTML = ''; // Очищаємо вміст виводу
+        output.innerHTML = ''; // Clear output content
 
-        if (!increasing) {
+        const direction = document.getElementById("direction").value;
+        const height = parseInt(document.getElementById("height").value);
+        const symbol = document.getElementById("symbol").value;
+
+        if (direction === "increasing") {
             for (let i = 1; i <= height; i++) {
                 let row = '';
                 for (let j = 1; j <= i; j++) {
@@ -56,19 +60,15 @@
     // Function to update the triangle type depending on the checkbox
     function updateTriangle() {
         const checkbox = document.getElementById("both");
-        const showBoth = checkbox.checked; // Перевіряємо, чи вибрано чекбокс
-
-        const direction = document.getElementById("direction").value;
-        const height = parseInt(document.getElementById("height").value);
-        const symbol = document.getElementById("symbol").value;
+        const showBoth = checkbox.checked; // Check if the checkbox is checked
 
         if (showBoth) {
-            // Показуємо обидва типи трикутників
-            drawTriangle(height, symbol, false); // Зменшуючий
-            drawTriangle(height, symbol, true); // Зростаючий
+            // Show both types of triangles
+            drawTriangle(); // Increasing
+            drawTriangle(); // Decreasing
         } else {
-            // Показуємо один тип трикутника, вибраний у випадаючому списку
-            drawTriangle(height, symbol, direction === "increasing");
+            // Show the selected type of triangle from the dropdown
+            drawTriangle();
         }
     }
 </script>
