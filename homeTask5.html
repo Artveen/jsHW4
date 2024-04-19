@@ -16,8 +16,8 @@
 <br>
 <label for="direction">The direction of the triangle:</label>
 <select id="direction">
-    <option value="increasing">Increasing</option>
-    <option value="decreasing">Decreasing</option>
+    <option value="up">Increasing</option>
+    <option value="down">Decreasing</option>
 </select>
 <br>
 <br>
@@ -30,27 +30,26 @@
 
 <script>
     // Function to draw a triangle
-    function drawTriangle(height, symbol, decreasing) {
-        const output = document.getElementById("output");
-        output.innerHTML = ''; // Clear output content
+    function drawTriangle(height, symbol, direction) {
+        let triangle = '';
 
-        if (decreasing) {
-            for (let i = height; i >= 1; i--) {
-                let row = '';
-                for (let j = 1; j <= i; j++) {
-                    row += symbol;
+        switch (direction) {
+            case 'up': // Трикутник спрямований вгору
+                for (let i = 1; i <= height; i++) {
+                    triangle += symbol.repeat(i) + '<br>';
                 }
-                output.innerHTML += row + "<br>";
-            }
-        } else {
-            for (let i = 1; i <= height; i++) {
-                let row = '';
-                for (let j = 1; j <= i; j++) {
-                    row += symbol;
+                break;
+            case 'down': // Трикутник спрямований вниз
+                for (let i = height; i >= 1; i--) {
+                    triangle += symbol.repeat(i) + '<br>';
                 }
-                output.innerHTML += row + "<br>";
-            }
+                break;
+            default:
+                triangle = 'Invalid direction';
+                break;
         }
+
+        return triangle;
     }
 
     // Function to update the triangle type depending on the checkbox
@@ -61,6 +60,7 @@
         if (showBoth) {
             // Show both types of triangles
             drawTriangles(); // Increasing
+            document.getElementById("output").innerHTML += "<br>"; // Add a line break
             drawTriangles(true); // Decreasing
         } else {
             // Show the selected type of triangle from the dropdown
@@ -73,8 +73,19 @@
         const direction = document.getElementById("direction").value;
         const height = parseInt(document.getElementById("height").value);
         const symbol = document.getElementById("symbol").value;
+        const output = document.getElementById("output");
 
-        drawTriangle(height, symbol, decreasing);
+        output.innerHTML = ''; // Clear output content
+
+        if (direction === "up") {
+            output.innerHTML += drawTriangle(height, symbol, "up");
+        } else if (direction === "down") {
+            output.innerHTML += drawTriangle(height, symbol, "down");
+        }
+
+        if (decreasing) {
+            output.innerHTML += drawTriangle(height, symbol, "down");
+        }
     }
 </script>
 
