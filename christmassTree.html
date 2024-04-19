@@ -6,33 +6,71 @@
     <title>Triangle Drawing</title>
 </head>
 <body>
+<label for="height">The height of the triangle: </label>
+<input type="number" id="height" value="5" min="1">
+<br>
+<br>
+<label for="symbol"> Symbol for drawing: </label>
+<input type="text" id="symbol" value="+">
+<br>
+<br>
+<label for="direction">The direction of the triangle:</label>
+<select id="direction">
+    <option value="increasing">Increasing</option>
+    <option value="decreasing">Decreasing</option>
+</select>
+<br>
+<br>
+<label for="both">Show both:</label>
+<input type="checkbox" id="both" onchange="updateTriangle()">
+<br>
+<br>
+<button onclick="drawTriangle()">Draw triangles</button>
+<div id="output"></div>
+
 <script>
     // Функція для малювання прямого трикутника
-    function drawTriangle(height, symbol, decreasing){
-        if(!decreasing){
+    function drawTriangle(height, symbol, increasing) {
+        const output = document.getElementById("output");
+        output.innerHTML = ''; // Очищаємо вміст виводу
+
+        if (!increasing) {
             for (let i = 1; i <= height; i++) {
                 let row = '';
-                for (let j = 1; j <= i; j++) { // Виправлено помилку: виправлено ";"
+                for (let j = 1; j <= i; j++) {
                     row += symbol;
                 }
-                document.write(row + "<br>");
+                output.innerHTML += row + "<br>";
             }
         } else {
-            for (let i = height; i >= 1; i--){
+            for (let i = height; i >= 1; i--) {
                 let row = '';
-                for(let j = 1; j <= i; j++){ // Виправлено помилку: виправлено "="
+                for (let j = 1; j <= i; j++) {
                     row += symbol;
                 }
-                document.write(row + "<br>");
+                output.innerHTML += row + "<br>";
             }
         }
     }
-    //Виклик функції для малювання трикутника зірочками зростаючим чи зменшуючим
-    drawTriangle(5, '+', false); //Ростущий трикутник
-    document.write("<br>");
-    document.write("<br>");
-    document.write("<br>");// Порожній рядок для розділення трикутників
-    drawTriangle(5, '+', true)//Зменшуючий трикутник
+
+    // Function to update the triangle type depending on the checkbox
+    function updateTriangle() {
+        const checkbox = document.getElementById("both");
+        const showBoth = checkbox.checked; // Перевіряємо, чи вибрано чекбокс
+
+        const direction = document.getElementById("direction").value;
+        const height = parseInt(document.getElementById("height").value);
+        const symbol = document.getElementById("symbol").value;
+
+        if (showBoth) {
+            // Показуємо обидва типи трикутників
+            drawTriangle(height, symbol, false); // Зменшуючий
+            drawTriangle(height, symbol, true); // Зростаючий
+        } else {
+            // Показуємо один тип трикутника, вибраний у випадаючому списку
+            drawTriangle(height, symbol, direction === "increasing");
+        }
+    }
 </script>
 
 </body>
