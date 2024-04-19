@@ -6,6 +6,7 @@
     <title>Triangle Drawing</title>
 </head>
 <body>
+<!-- Inputs for triangle parameters -->
 <label for="height">The height of the triangle: </label>
 <input type="number" id="height" value="5" min="1">
 <br>
@@ -22,10 +23,12 @@
 <br>
 <br>
 <label for="both">Show both:</label>
-<input type="checkbox" id="both" onchange="updateTriangle()">
+<input type="checkbox" id="both" onchange="updateTriangles()">
 <br>
 <br>
+<!-- Button to draw triangles -->
 <button onclick="drawTriangles()">Draw triangles</button>
+<!-- Output area for triangles -->
 <div id="output"></div>
 
 <script>
@@ -34,12 +37,12 @@
         let triangle = '';
 
         switch (direction) {
-            case 'up': // Трикутник спрямований вгору
+            case 'up': // Triangle pointing upwards
                 for (let i = 1; i <= height; i++) {
                     triangle += symbol.repeat(i) + '<br>';
                 }
                 break;
-            case 'down': // Трикутник спрямований вниз
+            case 'down': // Triangle pointing downwards
                 for (let i = height; i >= 1; i--) {
                     triangle += symbol.repeat(i) + '<br>';
                 }
@@ -53,14 +56,14 @@
     }
 
     // Function to update the triangle type depending on the checkbox
-    function updateTriangle() {
+    function updateTriangles() {
         const checkbox = document.getElementById("both");
         const showBoth = checkbox.checked; // Check if the checkbox is checked
 
         if (showBoth) {
-            // Show both types of triangles
-            drawTriangles(); // Increasing
-            document.getElementById("output").innerHTML += "<br>"; // Add a line break
+            // Show both types of triangles with extra line breaks between them
+            drawTriangles(false); // Increasing
+            document.getElementById("output").insertAdjacentHTML('beforeend', "<br><br><br>"); // Add extra line breaks
             drawTriangles(true); // Decreasing
         } else {
             // Show the selected type of triangle from the dropdown
@@ -77,12 +80,14 @@
 
         output.innerHTML = ''; // Clear output content
 
+        // Draw the triangle(s) based on the selected direction
         if (direction === "up") {
             output.innerHTML += drawTriangle(height, symbol, "up");
         } else if (direction === "down") {
             output.innerHTML += drawTriangle(height, symbol, "down");
         }
 
+        // If the 'show both' checkbox is checked, draw the second triangle
         if (decreasing) {
             output.innerHTML += drawTriangle(height, symbol, "down");
         }
