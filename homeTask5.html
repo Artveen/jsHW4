@@ -23,7 +23,7 @@
 <br>
 <br>
 <label for="both">Show both:</label>
-<input type="checkbox" id="both" onchange="updateTriangles()">
+<input type="checkbox" id="both">
 <br>
 <br>
 <!-- Button to draw triangles -->
@@ -55,28 +55,13 @@
         return triangle;
     }
 
-    // Function to update the triangle type depending on the checkbox
-    function updateTriangles() {
-        const checkbox = document.getElementById("both");
-        const showBoth = checkbox.checked; // Check if the checkbox is checked
-
-        if (showBoth) {
-            // Show both types of triangles with extra line breaks between them
-            drawTriangles(false); // Increasing
-            document.getElementById("output").insertAdjacentHTML('beforeend', "<br><br><br>"); // Add extra line breaks
-            drawTriangles(true); // Decreasing
-        } else {
-            // Show the selected type of triangle from the dropdown
-            drawTriangles();
-        }
-    }
-
     // Function to draw triangles based on the selected direction
-    function drawTriangles(decreasing = false) {
+    function drawTriangles() {
         const direction = document.getElementById("direction").value;
         const height = parseInt(document.getElementById("height").value);
         const symbol = document.getElementById("symbol").value;
         const output = document.getElementById("output");
+        const showBoth = document.getElementById("both").checked;
 
         output.innerHTML = ''; // Clear output content
 
@@ -88,8 +73,13 @@
         }
 
         // If the 'show both' checkbox is checked, draw the second triangle
-        if (decreasing) {
-            output.innerHTML += drawTriangle(height, symbol, "down");
+        if (showBoth) {
+            output.innerHTML += "<br><br><br>"; // Add extra line breaks
+            if (direction === "up") {
+                output.innerHTML += drawTriangle(height, symbol, "down");
+            } else if (direction === "down") {
+                output.innerHTML += drawTriangle(height, symbol, "up");
+            }
         }
     }
 </script>
