@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="745ba22b-9e89-4ed0-807d-5931f8786efb" name="Changes" comment="" />
+    <list default="true" id="745ba22b-9e89-4ed0-807d-5931f8786efb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/numbers.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
