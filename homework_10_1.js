@@ -1,4 +1,5 @@
-const regex = /^(?=(?:[^Aa]*)){6,}.{6,}$/;
+const regex = /^(?!.*[Aa]).{6,}$/;
+
 
 // Приклади рядків
 const strings = [
