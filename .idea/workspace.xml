@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="745ba22b-9e89-4ed0-807d-5931f8786efb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/task9array.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task_9_2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/homework_10_1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/homework_10_2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +54,7 @@
     "Attach to Node.js/Chrome.Unnamed.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "js__homework6",
+    "git-widget-placeholder": "js__homework__10",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/aivankov/Desktop/jsHW4",
     "node.js.detected.package.eslint": "true",
